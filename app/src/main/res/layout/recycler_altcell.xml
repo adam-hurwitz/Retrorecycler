@@ -10,12 +10,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"/>
-
-    <ImageView
-        android:id="@+id/recycler_cell_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:visibility="gone"/>
-
 </FrameLayout>

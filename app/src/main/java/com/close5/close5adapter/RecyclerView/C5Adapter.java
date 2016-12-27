@@ -39,7 +39,7 @@ public class C5Adapter
         if (viewType == 0){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_altcell,
                     parent, false);
-            return new C5AltViewHolder(view, this);
+            return new C5AltViewHolder(view);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_cell,
                     parent, false);
@@ -49,8 +49,12 @@ public class C5Adapter
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int pos){
-        Log.v(C5Adapter.class.getSimpleName(), "getLength - " + String.valueOf(holder));
-        ((C5ViewHolder) holder).bind(context, data.get(pos));
+        if (getItemViewType(pos) == 0){
+            ((C5AltViewHolder) holder).bind();
+        }
+        else {
+            ((C5ViewHolder) holder).bind(context, data.get(pos));
+        }
     }
 
     @Override

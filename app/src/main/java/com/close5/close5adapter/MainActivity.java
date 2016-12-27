@@ -70,9 +70,10 @@ public class MainActivity
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_list);
 
-        makeNetworkCall();
-
         initRecyclerView();
+
+        //todo: move to ViewModel
+        makeNetworkCall();
 
     }
 
@@ -89,19 +90,21 @@ public class MainActivity
         call.enqueue(new Callback<Model>() {
             @Override
             public void onResponse(Response<Model> response) {
+
                 try {
+
                     model = response.body();
                     items = model.getItems();
-
-                    Log.v(MainActivity.class.getSimpleName(), "getLength - " + items.size());
-
                     c5Adapter.swapItems(items);
+
                 } catch (NullPointerException e) {
+
                     if (response.code() == 401) {
                         Log.v(LOG_TAG, "Unauthenticated");
                     } else if (response.code() >= 400) {
                         Log.v(LOG_TAG, "Client Error " + response.code() + " " + response.message());
                     }
+
                 }
             }
             @Override
