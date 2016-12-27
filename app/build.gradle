@@ -39,5 +39,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.0';
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:support-v4:25.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
+
+    compile 'io.reactivex:rxjava:1.1.6'
 }

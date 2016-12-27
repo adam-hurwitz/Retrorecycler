@@ -7,21 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.close5.close5adapter.Model;
 import com.close5.close5adapter.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ahurwitz on 12/18/16.
  */
 
 public class C5Adapter
-        extends RecyclerView.Adapter<C5ViewHolder>
+        extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements C5ViewHolder.ViewHolderListener{
 
     Context context;
-    private ArrayList<String> data = new ArrayList<>();
+
+    private ArrayList<Model.Item> data = new ArrayList<>();
     AdapterListener adapterListener;
 
     public interface AdapterListener{
@@ -34,7 +35,7 @@ public class C5Adapter
     }
 
     @Override
-    public C5ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         if (viewType == 0){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_altcell,
                     parent, false);
@@ -47,8 +48,9 @@ public class C5Adapter
     }
 
     @Override
-    public void onBindViewHolder(C5ViewHolder holder, int pos){
-        holder.bind(context, data.get(pos));
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int pos){
+        Log.v(C5Adapter.class.getSimpleName(), "getLength - " + String.valueOf(holder));
+        ((C5ViewHolder) holder).bind(context, data.get(pos));
     }
 
     @Override
@@ -65,18 +67,18 @@ public class C5Adapter
       return data.size();
     }
 
-    public void addItems(List<String> list){
+    public void addItems(ArrayList<Model.Item> list){
         data.addAll(list);
         notifyDataSetChanged();
     }
 
-    public void swapItems(List<String> list){
+    public void swapItems(ArrayList<Model.Item> list){
         data.clear();
         data.addAll(list);
         notifyDataSetChanged();
     }
 
-    public String geturl(int position) {
+    public Model.Item getItem(int position) {
         return data.get(position);
     }
 
