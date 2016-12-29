@@ -1,4 +1,4 @@
-package com.close5.close5adapter;
+package com.adamhurwitz.retrorecycler;
 
 import org.junit.Test;
 

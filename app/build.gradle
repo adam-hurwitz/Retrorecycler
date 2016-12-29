@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "24.0.2"
     defaultConfig {
-        applicationId "com.close5.close5adapter"
+        applicationId "com.adamhurwitz.retrorecycler"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1

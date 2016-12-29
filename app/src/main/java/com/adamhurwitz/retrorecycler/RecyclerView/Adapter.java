@@ -1,4 +1,4 @@
-package com.close5.close5adapter.RecyclerView;
+package com.adamhurwitz.retrorecycler.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.close5.close5adapter.Model;
-import com.close5.close5adapter.R;
+import com.adamhurwitz.retrorecycler.Model;
+import com.adamhurwitz.retrorecycler.R;
 
 import java.util.ArrayList;
 
@@ -16,9 +16,9 @@ import java.util.ArrayList;
  * Created by ahurwitz on 12/18/16.
  */
 
-public class C5Adapter
+public class Adapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-        implements C5ViewHolder.ViewHolderListener{
+        implements MainViewHolder.ViewHolderListener{
 
     Context context;
 
@@ -29,7 +29,7 @@ public class C5Adapter
         void onCellClicked(String url);
     }
 
-    public C5Adapter(Context context, AdapterListener adapterListener){
+    public Adapter(Context context, AdapterListener adapterListener){
         this.context = context;
         this.adapterListener = adapterListener;
     }
@@ -39,21 +39,21 @@ public class C5Adapter
         if (viewType == 0){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_altcell,
                     parent, false);
-            return new C5AltViewHolder(view);
+            return new AltViewHolder(view);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_cell,
                     parent, false);
-            return new C5ViewHolder(view, this);
+            return new MainViewHolder(view, this);
         }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int pos){
         if (getItemViewType(pos) == 0){
-            ((C5AltViewHolder) holder).bind();
+            ((AltViewHolder) holder).bind();
         }
         else {
-            ((C5ViewHolder) holder).bind(context, data.get(pos));
+            ((MainViewHolder) holder).bind(context, data.get(pos));
         }
     }
 
@@ -89,7 +89,7 @@ public class C5Adapter
     @Override
     public void onCellClicked(String url, int position){
         notifyItemChanged(position);
-        Log.v(C5Adapter.class.getSimpleName(), "getUrl - " + url);
+        Log.v(Adapter.class.getSimpleName(), "getUrl - " + url);
         adapterListener.onCellClicked(url);
     }
 

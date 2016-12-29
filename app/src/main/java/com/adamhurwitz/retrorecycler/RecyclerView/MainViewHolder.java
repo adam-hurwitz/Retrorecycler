@@ -1,4 +1,4 @@
-package com.close5.close5adapter.RecyclerView;
+package com.adamhurwitz.retrorecycler.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,14 +8,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.close5.close5adapter.Model;
-import com.close5.close5adapter.R;
+import com.adamhurwitz.retrorecycler.Model;
+import com.adamhurwitz.retrorecycler.R;
 
 /**
  * Created by ahurwitz on 12/18/16.
  */
 
-public class C5ViewHolder extends RecyclerView.ViewHolder {
+public class MainViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout recyclerCell;
     ImageView imageView;
@@ -28,7 +28,7 @@ public class C5ViewHolder extends RecyclerView.ViewHolder {
         void onCellClicked(String url, int adapterPosition);
     }
 
-    public C5ViewHolder(View view, ViewHolderListener viewHolderListener) {
+    public MainViewHolder(View view, ViewHolderListener viewHolderListener) {
         super(view);
         recyclerCell = (FrameLayout) view.findViewById(R.id.recycler_cell);
         imageView = (ImageView) view.findViewById(R.id.recycler_cell_image);
@@ -39,7 +39,7 @@ public class C5ViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Context context, Model.Item item) {
         this.imageUrl = item.getImageUrl();
-        Log.v(C5ViewHolder.class.getSimpleName(), "getLength - " + imageUrl + " " + String
+        Log.v(MainViewHolder.class.getSimpleName(), "getLength - " + imageUrl + " " + String
                 .valueOf(context));
 
             Glide.with(context)
