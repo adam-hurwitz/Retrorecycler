@@ -22,22 +22,27 @@ public class Adapter
 
     Context context;
 
-    private ArrayList<Model.Item> data = new ArrayList<>();
+    private ArrayList<Model.Course> data = new ArrayList<>();
     AdapterListener adapterListener;
 
     public interface AdapterListener{
-        void onCellClicked(String url);
+        void onCellClicked(String imageUrl, String homepageUrl);
     }
 
-    public Adapter(Context context, AdapterListener adapterListener){
+    public Adapter(Context context){
         this.context = context;
-        this.adapterListener = adapterListener;
+
+        if (context instanceof AdapterListener){
+            adapterListener = (AdapterListener) context;
+        } else {
+            new RuntimeException("Activity or Fragment Needs to Implement AdapterListener");
+        }
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         if (viewType == 0){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_altcell,
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_headercell,
                     parent, false);
             return new AltViewHolder(view);
         } else {
@@ -71,26 +76,25 @@ public class Adapter
       return data.size();
     }
 
-    public void addItems(ArrayList<Model.Item> list){
+    public void addItems(ArrayList<Model.Course> list){
         data.addAll(list);
         notifyDataSetChanged();
     }
 
-    public void swapItems(ArrayList<Model.Item> list){
+    public void swapItems(ArrayList<Model.Course> list){
         data.clear();
         data.addAll(list);
         notifyDataSetChanged();
     }
 
-    public Model.Item getItem(int position) {
+    public Model.Course getItem(int position) {
         return data.get(position);
     }
 
     @Override
-    public void onCellClicked(String url, int position){
+    public void onCellClicked(String url, String homepageUrl, int position){
         notifyItemChanged(position);
-        Log.v(Adapter.class.getSimpleName(), "getUrl - " + url);
-        adapterListener.onCellClicked(url);
+        adapterListener.onCellClicked(url, homepageUrl);
     }
 
 }

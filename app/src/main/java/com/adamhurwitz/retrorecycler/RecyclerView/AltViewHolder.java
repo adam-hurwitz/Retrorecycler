@@ -2,6 +2,7 @@ package com.adamhurwitz.retrorecycler.RecyclerView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.adamhurwitz.retrorecycler.R;
@@ -11,15 +12,14 @@ import com.adamhurwitz.retrorecycler.R;
  */
 
 public class AltViewHolder extends RecyclerView.ViewHolder {
-    TextView textView;
+    ImageView imageView;
 
     public AltViewHolder(View view){
         super(view);
-        textView = (TextView) view.findViewById(R.id.recycler_altcell_text);
+        imageView = (ImageView) view.findViewById(R.id.recycler_header_image);
     }
 
     public void bind(){
-        textView.setText("Udacity Courses");
     }
 
 }

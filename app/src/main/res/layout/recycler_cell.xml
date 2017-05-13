@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/recycler_cell"
-             android:layout_width="match_parent"
-             android:layout_height="300dp"
-             android:orientation="vertical"
-             android:padding="8dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recycler_cell"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/recycler_cell_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="16dp"
+        android:text="Title"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16dp" />
+
     <ImageView
         android:id="@+id/recycler_cell_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
-</FrameLayout>
+        android:scaleType="centerCrop" />
+</LinearLayout>

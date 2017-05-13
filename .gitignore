@@ -7,3 +7,6 @@
 /build
 /captures
 .externalNativeBuild
+_gitignore
+app/_gitignore
+app/libs/
