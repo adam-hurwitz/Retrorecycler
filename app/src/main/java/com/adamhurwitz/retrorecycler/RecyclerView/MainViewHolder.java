@@ -47,7 +47,7 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
 
         title.setText(course.getTitle());
 
-        if (imageUrl != null && !imageUrl.isEmpty()){
+        if (imageUrl != null && !imageUrl.isEmpty()) {
             Glide.with(context)
                     .load(imageUrl)
                     .into(imageView);

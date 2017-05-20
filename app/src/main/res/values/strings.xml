@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RetrofitRecycler</string>
+    <string name="course_index">COURSE CATALOG</string>
 </resources>

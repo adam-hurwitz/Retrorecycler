@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RippleText">
+        <attr name ="rippleEnabled" format="boolean" />
+        <attr name ="backgroundColor" format="color" />
+        <attr name ="rippleColor" format="color" />
+    </declare-styleable>
+</resources>

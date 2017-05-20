@@ -2,7 +2,6 @@ package com.adamhurwitz.retrorecycler.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,21 +17,23 @@ import java.util.ArrayList;
 
 public class Adapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-        implements MainViewHolder.ViewHolderListener{
+        implements MainViewHolder.ViewHolderListener, HeaderViewHolder.HeaderViewHolderListener {
 
     Context context;
 
     private ArrayList<Model.Course> data = new ArrayList<>();
     AdapterListener adapterListener;
 
-    public interface AdapterListener{
-        void onCellClicked(String imageUrl, String homepageUrl);
+    public interface AdapterListener {
+        void onCourseIndexClick();
+
+        void onCellClick(String imageUrl, String homepageUrl);
     }
 
-    public Adapter(Context context){
+    public Adapter(Context context) {
         this.context = context;
 
-        if (context instanceof AdapterListener){
+        if (context instanceof AdapterListener) {
             adapterListener = (AdapterListener) context;
         } else {
             new RuntimeException("Activity or Fragment Needs to Implement AdapterListener");
@@ -40,11 +41,11 @@ public class Adapter
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        if (viewType == 0){
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == 0) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_headercell,
                     parent, false);
-            return new AltViewHolder(view);
+            return new HeaderViewHolder(view, this);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_cell,
                     parent, false);
@@ -53,18 +54,17 @@ public class Adapter
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int pos){
-        if (getItemViewType(pos) == 0){
-            ((AltViewHolder) holder).bind();
-        }
-        else {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int pos) {
+        if (getItemViewType(pos) == 0) {
+            ((HeaderViewHolder) holder).bind();
+        } else {
             ((MainViewHolder) holder).bind(context, data.get(pos));
         }
     }
 
     @Override
-    public int getItemViewType(int position){
-        if (position == 0){
+    public int getItemViewType(int position) {
+        if (position == 0) {
             return 0;
         } else {
             return position;
@@ -72,16 +72,16 @@ public class Adapter
     }
 
     @Override
-    public int getItemCount(){
-      return data.size();
+    public int getItemCount() {
+        return data.size();
     }
 
-    public void addItems(ArrayList<Model.Course> list){
+    public void addItems(ArrayList<Model.Course> list) {
         data.addAll(list);
         notifyDataSetChanged();
     }
 
-    public void swapItems(ArrayList<Model.Course> list){
+    public void swapItems(ArrayList<Model.Course> list) {
         data.clear();
         data.addAll(list);
         notifyDataSetChanged();
@@ -92,9 +92,13 @@ public class Adapter
     }
 
     @Override
-    public void onCellClicked(String url, String homepageUrl, int position){
-        notifyItemChanged(position);
-        adapterListener.onCellClicked(url, homepageUrl);
+    public void onCourseIndexClick() {
+        adapterListener.onCourseIndexClick();
     }
 
+    @Override
+    public void onCellClicked(String url, String homepageUrl, int position) {
+        notifyItemChanged(position);
+        adapterListener.onCellClick(url, homepageUrl);
+    }
 }

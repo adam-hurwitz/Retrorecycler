@@ -51,17 +51,25 @@ public class MainActivity
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
 
-            adapter.addItems(courses);
-            adapter.swapItems(courses);
+        adapter.addItems(courses);
+        adapter.swapItems(courses);
 
     }
 
     @Override
-    public void onCellClicked(String imageUrl, String homepageUrl){
-        if( homepageUrl != null && !homepageUrl.isEmpty()) {
+    public void onCourseIndexClick() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Urls.courseCatalog));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onCellClick(String imageUrl, String homepageUrl) {
+        if (homepageUrl != null && !homepageUrl.isEmpty()) {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(homepageUrl));
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
@@ -71,7 +79,7 @@ public class MainActivity
         }
     }
 
-    public void getData(ArrayList<Model.Course> data){
+    public void getData(ArrayList<Model.Course> data) {
         courses = data;
         adapter.swapItems(data);
     }
