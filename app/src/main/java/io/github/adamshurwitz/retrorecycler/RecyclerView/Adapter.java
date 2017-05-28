@@ -1,4 +1,4 @@
-package com.adamhurwitz.retrorecycler.RecyclerView;
+package io.github.adamshurwitz.retrorecycler.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,10 +6,9 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import com.adamhurwitz.retrorecycler.Model;
-import com.adamhurwitz.retrorecycler.R;
+import io.github.adamshurwitz.retrorecycler.R;
+import io.github.adamshurwitz.retrorecycler.Model;
 
 import java.util.ArrayList;
 

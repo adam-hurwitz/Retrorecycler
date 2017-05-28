@@ -1,9 +1,9 @@
-package com.adamhurwitz.retrorecycler.DependencyInjection;
+package io.github.adamshurwitz.retrorecycler.DependencyInjection;
 
-import com.adamhurwitz.retrorecycler.MainActivity;
-import com.adamhurwitz.retrorecycler.MainViewModel;
-import com.adamhurwitz.retrorecycler.Network.Repository;
-import com.adamhurwitz.retrorecycler.RetroRecyclerApplication;
+
+import io.github.adamshurwitz.retrorecycler.MainViewModel;
+import io.github.adamshurwitz.retrorecycler.Network.Repository;
+import io.github.adamshurwitz.retrorecycler.RetroRecyclerApplication;
 
 import javax.inject.Singleton;
 

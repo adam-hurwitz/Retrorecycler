@@ -1,12 +1,11 @@
-package com.adamhurwitz.retrorecycler.DesignComponents;
+package io.github.adamshurwitz.retrorecycler.DesignComponents;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.util.Log;
+import io.github.adamshurwitz.retrorecycler.R;
 
-import com.adamhurwitz.retrorecycler.R;
 
 /**
  * Created by ahurwitz on 5/13/17.

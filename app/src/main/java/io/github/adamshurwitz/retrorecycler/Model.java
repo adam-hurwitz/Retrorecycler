@@ -1,4 +1,4 @@
-package com.adamhurwitz.retrorecycler;
+package io.github.adamshurwitz.retrorecycler;
 
 import android.os.Parcel;
 import android.os.Parcelable;

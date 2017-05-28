@@ -1,4 +1,4 @@
-package com.adamhurwitz.retrorecycler;
+package io.github.adamshurwitz.retrorecycler;
 
 /**
  * Created by ahurwitz on 5/14/17.

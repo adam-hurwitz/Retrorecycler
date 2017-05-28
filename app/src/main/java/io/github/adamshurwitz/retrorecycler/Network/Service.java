@@ -1,6 +1,7 @@
-package com.adamhurwitz.retrorecycler.Network;
+package io.github.adamshurwitz.retrorecycler.Network;
 
-import com.adamhurwitz.retrorecycler.Model;
+
+import io.github.adamshurwitz.retrorecycler.Model;
 
 import retrofit2.http.GET;
 import rx.Observable;

@@ -1,11 +1,10 @@
-package com.adamhurwitz.retrorecycler;
+package io.github.adamshurwitz.retrorecycler;
 
 import android.app.Application;
-import android.content.Context;
 
-import com.adamhurwitz.retrorecycler.DependencyInjection.DaggerDataComponent;
-import com.adamhurwitz.retrorecycler.DependencyInjection.DataComponent;
-import com.adamhurwitz.retrorecycler.DependencyInjection.DataModule;
+import io.github.adamshurwitz.retrorecycler.DependencyInjection.DaggerDataComponent;
+import io.github.adamshurwitz.retrorecycler.DependencyInjection.DataComponent;
+import io.github.adamshurwitz.retrorecycler.DependencyInjection.DataModule;
 
 /**
  * Created by ahurwitz on 1/23/17.

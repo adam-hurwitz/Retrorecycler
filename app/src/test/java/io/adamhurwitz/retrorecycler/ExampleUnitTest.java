@@ -1,4 +1,4 @@
-package com.adamhurwitz.retrorecycler;
+package io.adamhurwitz.retrorecycler;
 
 import org.junit.Test;
 

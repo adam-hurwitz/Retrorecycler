@@ -1,14 +1,15 @@
-package com.adamhurwitz.retrorecycler.DependencyInjection;
+package io.github.adamshurwitz.retrorecycler.DependencyInjection;
 
 import android.app.Application;
 
-import com.adamhurwitz.retrorecycler.Network.Repository;
-import com.adamhurwitz.retrorecycler.Network.Service;
+
+import io.github.adamshurwitz.retrorecycler.Network.Repository;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.github.adamshurwitz.retrorecycler.Network.Service;
 import okhttp3.OkHttpClient;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;

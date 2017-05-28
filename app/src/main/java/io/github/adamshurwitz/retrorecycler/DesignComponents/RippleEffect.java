@@ -1,4 +1,4 @@
-package com.adamhurwitz.retrorecycler.DesignComponents;
+package io.github.adamshurwitz.retrorecycler.DesignComponents;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
@@ -11,8 +11,6 @@ import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.StateSet;
 import android.view.View;
-
-import com.adamhurwitz.retrorecycler.R;
 
 /**
  * Created by ahurwitz on 5/13/17.

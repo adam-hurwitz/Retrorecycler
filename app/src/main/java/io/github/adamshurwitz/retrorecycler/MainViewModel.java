@@ -1,8 +1,9 @@
-package com.adamhurwitz.retrorecycler;
+package io.github.adamshurwitz.retrorecycler;
 
 import android.util.Log;
 
-import com.adamhurwitz.retrorecycler.Network.Repository;
+
+import io.github.adamshurwitz.retrorecycler.Network.Repository;
 
 import java.util.ArrayList;
 

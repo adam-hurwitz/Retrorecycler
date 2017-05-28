@@ -1,7 +1,6 @@
-package com.adamhurwitz.retrorecycler.Network;
+package io.github.adamshurwitz.retrorecycler.Network;
 
-import com.adamhurwitz.retrorecycler.Model;
-import com.adamhurwitz.retrorecycler.RetroRecyclerApplication;
+import io.github.adamshurwitz.retrorecycler.Model;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package com.adamhurwitz.retrorecycler;
+package io.github.adamshurwitz.retrorecycler;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
 import android.widget.Toast;
 
-import com.adamhurwitz.retrorecycler.RecyclerView.Adapter;
+
+import io.github.adamshurwitz.retrorecycler.RecyclerView.Adapter;
 
 import java.util.ArrayList;
 
-import rx.functions.Action1;
 
 public class MainActivity
         extends AppCompatActivity

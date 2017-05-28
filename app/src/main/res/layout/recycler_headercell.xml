@@ -17,7 +17,7 @@
         android:paddingTop="8dp"
         android:src="@drawable/udacity_header" />
 
-    <com.adamhurwitz.retrorecycler.DesignComponents.RippleTextView
+    <io.github.adamshurwitz.retrorecycler.DesignComponents.RippleTextView
         android:id="@+id/course_index"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

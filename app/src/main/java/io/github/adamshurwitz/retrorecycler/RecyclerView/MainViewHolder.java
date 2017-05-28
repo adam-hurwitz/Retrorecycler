@@ -1,17 +1,15 @@
-package com.adamhurwitz.retrorecycler.RecyclerView;
+package io.github.adamshurwitz.retrorecycler.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.adamhurwitz.retrorecycler.Model;
-import com.adamhurwitz.retrorecycler.R;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import io.github.adamshurwitz.retrorecycler.Model;
 
 /**
  * Created by ahurwitz on 12/18/16.
@@ -32,9 +30,9 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
     public MainViewHolder(View view, View.OnClickListener onClickListener) {
         super(view);
 
-        recyclerCell = (LinearLayout) view.findViewById(R.id.recycler_cell);
-        title = (TextView) view.findViewById(R.id.recycler_cell_title);
-        imageView = (ImageView) view.findViewById(R.id.recycler_cell_image);
+        recyclerCell = (LinearLayout) view.findViewById(io.github.adamshurwitz.retrorecycler.R.id.recycler_cell);
+        title = (TextView) view.findViewById(io.github.adamshurwitz.retrorecycler.R.id.recycler_cell_title);
+        imageView = (ImageView) view.findViewById(io.github.adamshurwitz.retrorecycler.R.id.recycler_cell_image);
         HOMEPAG_TAG_ID = imageView.getId();
         LAYOUT_POS_ID = imageView.getId()+1;
 
@@ -54,7 +52,7 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
                     .into(imageView);
         } else {
             Glide.with(context)
-                    .load(R.drawable.udacity_anim)
+                    .load(io.github.adamshurwitz.retrorecycler.R.drawable.udacity_anim)
                     .asGif()
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(imageView);
