@@ -6,15 +6,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.widget.Toast;
 
 import com.adamhurwitz.retrorecycler.RecyclerView.Adapter;
 
 import java.util.ArrayList;
 
+import rx.functions.Action1;
+
 public class MainActivity
         extends AppCompatActivity
-        implements Adapter.AdapterListener, MainViewModel.MainView {
+        implements MainViewModel.MainView {
 
 
     private Adapter adapter;
@@ -48,6 +51,8 @@ public class MainActivity
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
+        onIndexClickedEvent();
+        onCourseClickedEvent();
     }
 
     @Override
@@ -59,24 +64,26 @@ public class MainActivity
 
     }
 
-    @Override
-    public void onCourseIndexClick() {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Urls.courseCatalog));
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
-    }
-
-    @Override
-    public void onCellClick(String imageUrl, String homepageUrl) {
-        if (homepageUrl != null && !homepageUrl.isEmpty()) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(homepageUrl));
+    private void onIndexClickedEvent() {
+        adapter.indexClickedEvent().subscribe(pair -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Urls.courseCatalog));
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             }
-        } else {
-            Toast.makeText(this, NO_HOMEPAGE, Toast.LENGTH_SHORT).show();
-        }
+        });
+    }
+
+    private void onCourseClickedEvent() {
+        adapter.courseClickedEvent().subscribe(pair -> {
+            if (pair.first != null && !pair.first.isEmpty()) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(pair.first));
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            } else {
+                Toast.makeText(this, NO_HOMEPAGE, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void getData(ArrayList<Model.Course> data) {

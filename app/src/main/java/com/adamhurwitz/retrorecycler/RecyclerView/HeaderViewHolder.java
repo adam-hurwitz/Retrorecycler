@@ -19,25 +19,15 @@ public class HeaderViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView indexBtn;
 
-    public HeaderViewHolderListener headerViewHolderListener;
-
-    public interface HeaderViewHolderListener {
-        void onCourseIndexClick();
-    }
-
-    public HeaderViewHolder(View view, HeaderViewHolderListener headerViewHolderListener) {
+    public HeaderViewHolder(View view, View.OnClickListener onClickListener) {
         super(view);
-        this.headerViewHolderListener = headerViewHolderListener;
         imageView = (ImageView) view.findViewById(R.id.recycler_header_image);
         indexBtn = (TextView) view.findViewById(R.id.course_index);
-
-        indexBtn.setOnClickListener(v -> {
-            headerViewHolderListener.onCourseIndexClick();
-
-        });
+        indexBtn.setOnClickListener(onClickListener);
     }
 
     public void bind() {
+
     }
 
 }

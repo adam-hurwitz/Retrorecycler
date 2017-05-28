@@ -19,30 +19,31 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class MainViewHolder extends RecyclerView.ViewHolder {
 
-    LinearLayout recyclerCell;
-    TextView title;
-    ImageView imageView;
+    public LinearLayout recyclerCell;
+    public TextView title;
+    public ImageView imageView;
 
-    String imageUrl;
-    String homepageUrl;
+    public String imageUrl;
+    public String homepageUrl;
 
-    ViewHolderListener viewHolderListener;
+    private int HOMEPAG_TAG_ID = 0;
+    private int LAYOUT_POS_ID = 0;
 
-    public interface ViewHolderListener {
-        void onCellClicked(String imageUrl, String homepageUrl, int adapterPosition);
-    }
-
-    public MainViewHolder(View view, ViewHolderListener viewHolderListener) {
+    public MainViewHolder(View view, View.OnClickListener onClickListener) {
         super(view);
+
         recyclerCell = (LinearLayout) view.findViewById(R.id.recycler_cell);
         title = (TextView) view.findViewById(R.id.recycler_cell_title);
         imageView = (ImageView) view.findViewById(R.id.recycler_cell_image);
+        HOMEPAG_TAG_ID = imageView.getId();
+        LAYOUT_POS_ID = imageView.getId()+1;
 
-        this.viewHolderListener = viewHolderListener;
-        recyclerCell.setOnClickListener(this::onClick);
+        recyclerCell.setOnClickListener(onClickListener);
+
     }
 
     public void bind(Context context, Model.Course course) {
+
         this.imageUrl = course.getImageUrl();
 
         title.setText(course.getTitle());
@@ -60,9 +61,9 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
         }
 
         this.homepageUrl = course.getHomepage();
+
+        recyclerCell.setTag(HOMEPAG_TAG_ID, homepageUrl);
+        recyclerCell.setTag(LAYOUT_POS_ID, getLayoutPosition());
     }
 
-    private void onClick(View view) {
-        viewHolderListener.onCellClicked(this.imageUrl, this.homepageUrl, getLayoutPosition());
-    }
 }

@@ -2,42 +2,35 @@ package com.adamhurwitz.retrorecycler.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.adamhurwitz.retrorecycler.Model;
 import com.adamhurwitz.retrorecycler.R;
 
 import java.util.ArrayList;
 
+import rx.Observable;
+import rx.subjects.ReplaySubject;
+
 /**
  * Created by ahurwitz on 12/18/16.
  */
 
-public class Adapter
-        extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-        implements MainViewHolder.ViewHolderListener, HeaderViewHolder.HeaderViewHolderListener {
+public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
-    Context context;
-
+    private Context context;
     private ArrayList<Model.Course> data = new ArrayList<>();
-    AdapterListener adapterListener;
-
-    public interface AdapterListener {
-        void onCourseIndexClick();
-
-        void onCellClick(String imageUrl, String homepageUrl);
-    }
+    private MainViewHolder mainViewHolder;
+    private HeaderViewHolder headerViewHolder;
+    private ReplaySubject<Pair<String, Integer>> courseClickedSubscriber = ReplaySubject.create();
+    private ReplaySubject<String> indexClickedSubscriber = ReplaySubject.create();
 
     public Adapter(Context context) {
         this.context = context;
-
-        if (context instanceof AdapterListener) {
-            adapterListener = (AdapterListener) context;
-        } else {
-            new RuntimeException("Activity or Fragment Needs to Implement AdapterListener");
-        }
     }
 
     @Override
@@ -45,11 +38,13 @@ public class Adapter
         if (viewType == 0) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_headercell,
                     parent, false);
-            return new HeaderViewHolder(view, this);
+            headerViewHolder = new HeaderViewHolder(view, this);
+            return headerViewHolder;
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_cell,
                     parent, false);
-            return new MainViewHolder(view, this);
+            mainViewHolder = new MainViewHolder(view, this);
+            return mainViewHolder;
         }
     }
 
@@ -91,14 +86,30 @@ public class Adapter
         return data.get(position);
     }
 
-    @Override
-    public void onCourseIndexClick() {
-        adapterListener.onCourseIndexClick();
+    public Observable<Pair<String, Integer>> courseClickedEvent(){
+        return courseClickedSubscriber.asObservable();
+    }
+
+    public Observable<String> indexClickedEvent(){
+        return indexClickedSubscriber.asObservable();
     }
 
     @Override
-    public void onCellClicked(String url, String homepageUrl, int position) {
-        notifyItemChanged(position);
-        adapterListener.onCellClick(url, homepageUrl);
+    public void onClick(View v) {
+        
+        switch (v.getId()) {
+
+            case R.id.course_index:
+                indexClickedSubscriber.onNext("");
+                break;
+
+            case R.id.recycler_cell:
+                String courseUrl = (String) v.getTag(mainViewHolder.imageView.getId());
+                int position = (Integer) v.getTag(mainViewHolder.imageView.getId()+1);
+                courseClickedSubscriber.onNext(new Pair<>(courseUrl, position));
+                notifyItemChanged(position);
+                break;
+        }
+
     }
 }
