@@ -53,6 +53,8 @@ dependencies {
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.1.5'
 
+    compile 'com.github.adamshurwitz.customrippleview:customrippleview:1.11'
+
     //dagger
     // apt command comes from the android-apt plugin
     apt 'com.google.dagger:dagger-compiler:2.8'
