@@ -44,11 +44,10 @@ public class MainViewModel {
                 .subscribeOn(Schedulers.io())
                 //where results are delivered
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(throwable -> {
-                    Log.e(MainViewModel.class.getSimpleName(), "Error with Udacity network call");
-                })
                 .subscribe(model -> {
                     mainView.getData(model.getCourses());
+                }, throwable -> {
+                    Log.e(MainViewModel.class.getSimpleName(), throwable.toString());
                 });
     }
 

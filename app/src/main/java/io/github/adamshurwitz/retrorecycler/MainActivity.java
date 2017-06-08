@@ -51,19 +51,16 @@ public class MainActivity
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        if (compositeSubscription != null) {
-            compositeSubscription.clear();
-        }
+    public void onResume() {
+        super.onResume();
+        adapter.addItems(courses);
+        adapter.swapItems(courses);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        compositeSubscription = new CompositeSubscription();
-        adapter.addItems(courses);
-        adapter.swapItems(courses);
+    protected void onDestroy() {
+        super.onDestroy();
+        compositeSubscription.clear();
     }
 
     private void initRecyclerView() {
