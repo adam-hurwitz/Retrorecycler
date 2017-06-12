@@ -1,6 +1,7 @@
 package io.github.adamshurwitz.retrorecycler;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 
 import io.github.adamshurwitz.retrorecycler.RecyclerView.Adapter;
+import io.github.adamshurwitz.retrorecycler.databinding.ActivityMainBinding;
 import rx.subscriptions.CompositeSubscription;
 
 import java.util.ArrayList;
@@ -20,9 +22,9 @@ public class MainActivity
         extends AppCompatActivity
         implements MainViewModel.MainView {
 
+    private ActivityMainBinding binding;
 
     private Adapter adapter;
-    private RecyclerView recyclerView;
 
     private ArrayList<Model.Course> courses = new ArrayList<>();
 
@@ -38,9 +40,7 @@ public class MainActivity
 
         compositeSubscription = new CompositeSubscription();
 
-        setContentView(R.layout.activity_main);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_list);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         initRecyclerView();
 
@@ -66,9 +66,9 @@ public class MainActivity
     private void initRecyclerView() {
 
         adapter = new Adapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
+        binding.recyclerList.setAdapter(adapter);
+        binding.recyclerList.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerList.setHasFixedSize(true);
         onIndexClickedEvent();
         onCourseClickedEvent();
 

@@ -6,19 +6,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import io.github.adamshurwitz.retrorecycler.databinding.RecyclerHeadercellBinding;
+
 /**
  * Created by ahurwitz on 12/18/16.
  */
 
 public class HeaderViewHolder extends RecyclerView.ViewHolder {
-    ImageView imageView;
-    TextView indexBtn;
+
+    RecyclerHeadercellBinding binding;
 
     public HeaderViewHolder(View view, View.OnClickListener onClickListener) {
         super(view);
-        imageView = (ImageView) view.findViewById(io.github.adamshurwitz.retrorecycler.R.id.recycler_header_image);
-        indexBtn = (TextView) view.findViewById(io.github.adamshurwitz.retrorecycler.R.id.course_index);
-        indexBtn.setOnClickListener(onClickListener);
+        binding = RecyclerHeadercellBinding.bind(view);
+        binding.courseIndex.setOnClickListener(onClickListener);
     }
 
     public void bind() {

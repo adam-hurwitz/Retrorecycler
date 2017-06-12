@@ -103,8 +103,8 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imple
                 break;
 
             case R.id.recycler_cell:
-                String courseUrl = (String) v.getTag(mainViewHolder.imageView.getId());
-                int position = (Integer) v.getTag(mainViewHolder.imageView.getId()+1);
+                String courseUrl = (String) v.getTag(mainViewHolder.binding.recyclerCellImage.getId());
+                int position = (Integer) v.getTag(mainViewHolder.binding.recyclerCellImage.getId()+1);
                 courseClickedSubscriber.onNext(new Pair<>(courseUrl, position));
                 notifyItemChanged(position);
                 break;
