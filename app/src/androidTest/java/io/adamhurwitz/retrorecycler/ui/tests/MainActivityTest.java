@@ -1,6 +1,5 @@
 package io.adamhurwitz.retrorecycler.ui.tests;
 
-import android.os.SystemClock;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
@@ -11,15 +10,10 @@ import org.junit.Test;
 import io.github.adamshurwitz.retrorecycler.MainActivity;
 import io.github.adamshurwitz.retrorecycler.R;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.pressImeActionButton;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
+import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -40,15 +34,14 @@ public class MainActivityTest {
     }
 
     //todo: debug
-    /*@Test
+    @Test
     public void scrollToCourseCatalog() {
         // First scroll to the position that needs to be matched and click on it.
         onView(ViewMatchers.withId(R.id.recycler_list))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-
+                .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         // Match the text in an item below the fold and check that it's displayed.
         onView(withText("COURSE CATALOG")).check(matches(isDisplayed()));
-    }*/
+    }
 
 }
 
