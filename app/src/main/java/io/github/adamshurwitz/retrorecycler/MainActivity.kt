@@ -6,7 +6,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 
 
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
 
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
+        initToolbar()
+
         initRecyclerView()
 
         mainViewModel = MainViewModel(this)
@@ -53,6 +58,11 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
     override fun onDestroy() {
         super.onDestroy()
         compositeSubscription!!.clear()
+    }
+
+    private fun initToolbar() {
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
     }
 
     private fun initRecyclerView() {
