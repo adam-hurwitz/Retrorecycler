@@ -1,13 +1,19 @@
 package io.github.adamshurwitz.retrorecycler
 
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import com.github.adamshurwitz.materialsearchtoolbar.SearchDialogFragment
+import android.support.v4.app.FragmentManager;
 
 
 import io.github.adamshurwitz.retrorecycler.RecyclerView.Adapter
@@ -29,6 +35,8 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
 
     private var compositeSubscription: CompositeSubscription? = null
 
+    private var searchDialogFragment: SearchDialogFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,11 +44,34 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
 
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
+        initToolbar()
+
         initRecyclerView()
 
         mainViewModel = MainViewModel(this)
 
         mainViewModel!!.makeNetworkCall()
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.getItemId()) {
+            R.id.search -> {
+                launchSearch()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun launchSearch(){
+
+        searchDialogFragment = SearchDialogFragment()
+        searchDialogFragment?.show(supportFragmentManager, "tag")
 
     }
 
@@ -53,6 +84,11 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
     override fun onDestroy() {
         super.onDestroy()
         compositeSubscription!!.clear()
+    }
+
+    private fun initToolbar() {
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
     }
 
     private fun initRecyclerView() {
@@ -98,6 +134,10 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
     companion object {
 
         private val NO_HOMEPAGE = "No Homepage Provided"
+    }
+
+    private fun querySubmittedEvent() {
+        //todo: do something
     }
 
 }

@@ -10,3 +10,5 @@
 _gitignore
 app/_gitignore
 app/libs/
+.gitignore
+proguard-rules.pro

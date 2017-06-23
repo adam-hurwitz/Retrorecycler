@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">materialsearchtoolbar</string>
+    <string name="hint_search_items">What are you looking for?</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RecentSearchStyle">
+        <item name="android:textSelectHandleRight">@drawable/ic_righthandle</item>
+        <item name="android:textSelectHandleLeft">@drawable/ic_lefthandle</item>
+        <item name="android:textSelectHandle">@drawable/ic_middlehandle</item>
+    </style>
+</resources>

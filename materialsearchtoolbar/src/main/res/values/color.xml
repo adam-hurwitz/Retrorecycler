@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent_color">#80000000</color>
+    //todo: make editable
+    <color name="primaryCopy">#4c5f70</color>
+    <color name="tertiaryCopy">#aeb8c2</color>
+    <color name="primaryText">#4c5f70</color>
+    <color name="text_highlight">#33e3393c</color>
+</resources>

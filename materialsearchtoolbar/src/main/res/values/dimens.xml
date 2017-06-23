@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="margin_tiniest">2dp</dimen>
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_inset">12dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
+
+    <dimen name="action_status_bar">56dp</dimen>
+
+    <dimen name="text_size_secondary_copy">18sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+
+    <!--Recent Search-->
+    <dimen name="recent_search_margin">0dp</dimen>
+
+</resources>
