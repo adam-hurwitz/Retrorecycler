@@ -1,28 +1,21 @@
 package io.github.adamshurwitz.retrorecycler
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
-
-
 import io.github.adamshurwitz.retrorecycler.RecyclerView.Adapter
-import io.github.adamshurwitz.retrorecycler.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 import rx.subscriptions.CompositeSubscription
 
 import java.util.ArrayList
 
 
 class MainActivity : AppCompatActivity(), MainViewModel.MainView {
-
-    private var binding: ActivityMainBinding? = null
 
     private var adapter: Adapter? = null
 
@@ -34,10 +27,9 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         compositeSubscription = CompositeSubscription()
-
-        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
         initToolbar()
 
@@ -48,6 +40,8 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
         mainViewModel!!.makeNetworkCall()
 
     }
+
+
 
     public override fun onResume() {
         super.onResume()
@@ -61,16 +55,15 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
     }
 
     private fun initToolbar() {
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
+        setSupportActionBar(this.toolbar)
     }
 
     private fun initRecyclerView() {
 
         adapter = Adapter(this)
-        binding!!.recyclerList.adapter = adapter
-        binding!!.recyclerList.layoutManager = LinearLayoutManager(this)
-        binding!!.recyclerList.setHasFixedSize(true)
+        this.recyclerList.adapter = adapter;
+        this.recyclerList.layoutManager = LinearLayoutManager(this)
+        this.recyclerList.setHasFixedSize(true)
         onIndexClickedEvent()
         onCourseClickedEvent()
 
