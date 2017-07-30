@@ -2,9 +2,9 @@ package io.github.adamshurwitz.retrorecycler;
 
 import android.app.Application;
 
-import io.github.adamshurwitz.retrorecycler.DependencyInjection.DaggerDataComponent;
-import io.github.adamshurwitz.retrorecycler.DependencyInjection.DataComponent;
-import io.github.adamshurwitz.retrorecycler.DependencyInjection.DataModule;
+import io.github.adamshurwitz.retrorecycler.dependencyinjection.DaggerDataComponent;
+import io.github.adamshurwitz.retrorecycler.dependencyinjection.DataComponent;
+import io.github.adamshurwitz.retrorecycler.dependencyinjection.DataModule;
 
 /**
  * Created by ahurwitz on 1/23/17.

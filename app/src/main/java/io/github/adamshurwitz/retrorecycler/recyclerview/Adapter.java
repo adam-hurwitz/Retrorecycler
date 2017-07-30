@@ -1,4 +1,4 @@
-package io.github.adamshurwitz.retrorecycler.RecyclerView;
+package io.github.adamshurwitz.retrorecycler.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

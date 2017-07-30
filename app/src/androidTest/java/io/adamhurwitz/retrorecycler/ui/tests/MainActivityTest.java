@@ -13,9 +13,7 @@ import io.github.adamshurwitz.retrorecycler.R;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
@@ -37,7 +35,7 @@ public class MainActivityTest {
     @Test
     public void scrollToCourseCatalog() {
         // First scroll to the position that needs to be matched and click on it.
-        onView(ViewMatchers.withId(R.id.recycler_list))
+        onView(ViewMatchers.withId(R.id.recyclerList))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         // Match the text in an item below the fold and check that it's displayed.
         onView(withText("COURSE CATALOG")).check(matches(isDisplayed()));

@@ -1,10 +1,8 @@
-package io.github.adamshurwitz.retrorecycler.RecyclerView
+package io.github.adamshurwitz.retrorecycler.recyclerview
 
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 
 import io.github.adamshurwitz.retrorecycler.databinding.RecyclerHeadercellBinding
 

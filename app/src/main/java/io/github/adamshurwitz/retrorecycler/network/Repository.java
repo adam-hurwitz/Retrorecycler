@@ -1,4 +1,4 @@
-package io.github.adamshurwitz.retrorecycler.Network;
+package io.github.adamshurwitz.retrorecycler.network;
 
 import io.github.adamshurwitz.retrorecycler.Model;
 

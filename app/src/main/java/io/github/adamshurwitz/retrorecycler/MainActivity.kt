@@ -7,12 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
-import io.github.adamshurwitz.retrorecycler.RecyclerView.Adapter
+import io.github.adamshurwitz.retrorecycler.recyclerview.Adapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import rx.subscriptions.CompositeSubscription
-
-import java.util.ArrayList
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), MainViewModel.MainView {
