@@ -19,7 +19,7 @@
             android:paddingTop="8dp"
             android:src="@drawable/udacity_header" />
 
-        <com.github.adamshurwitz.customrippleview.RippleTextView
+        <com.ebay.customrippleview.RippleTextView
             android:id="@+id/course_index"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
