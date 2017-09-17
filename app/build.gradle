@@ -73,7 +73,7 @@ dependencies {
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.1.5'
 
-    compile 'com.ebay.customrippleview:customrippleview:1.0'
+    compile 'com.ebay.customrippleview:customrippleview:1.1'
 
     //dagger
     compile 'com.google.dagger:dagger:2.9'
